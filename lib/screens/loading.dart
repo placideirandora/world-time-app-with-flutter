@@ -12,14 +12,15 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   void setupWorldTime() async {
     WorldTime instance =
-        WorldTime(location: 'Paris', flag: 'paris.png', url: 'Europe/paris');
+        WorldTime(location: 'Paris', flag: 'paris.png', url: 'Europe/Paris');
 
     await instance.getTime();
 
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': instance.location,
       'flag': instance.flag,
-      'time': instance.time
+      'time': instance.time,
+      'isDayTime': instance.isDayTime
     });
   }
 
