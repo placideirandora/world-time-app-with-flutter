@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 
 class WorldTime {
@@ -20,7 +21,7 @@ class WorldTime {
       String offset = data['utc_offset'].substring(1, 3);
       DateTime now = DateTime.parse(dateTime);
       now = now.add(Duration(hours: int.parse(offset)));
-      time = now.toString();
+      time = DateFormat.jm().format(now);
     } catch (err) {
       time = 'Could not get Time data';
     }
