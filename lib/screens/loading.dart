@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:world_time/services/world_time.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -32,11 +33,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Text('Loading'),
-      )),
+      body: Center(
+        child: SpinKitFadingCircle(
+          color: Colors.blue,
+          size: 60.0,
+        ),
+      ),
     );
   }
 }
