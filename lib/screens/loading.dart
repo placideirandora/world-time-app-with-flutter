@@ -14,16 +14,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
 
-    getData();
+    getTime();
   }
 
-  void getData() async {
-    http.Response response =
-        await http.get(Uri.https('jsonplaceholder.typicode.com', 'todos/1'));
+  void getTime() async {
+    http.Response response = await http
+        .get(Uri.http('worldtimeapi.org', 'api/timezone/Africa/Kigali'));
 
     Map data = jsonDecode(response.body);
 
-    print(data['title']);
+    String dateTime = data['datetime'];
+    String offset = data['utc_offset'].substring(1, 3);
+    DateTime now = DateTime.parse(dateTime);
+    now = now.add(Duration(hours: int.parse(offset)));
   }
 
   @override
