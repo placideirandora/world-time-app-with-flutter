@@ -8,17 +8,40 @@ class ChooseLocationScreen extends StatefulWidget {
 }
 
 class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
+  int counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    print('Init State Function Run!');
+
+    getData();
+
+    print('statement');
+  }
+
+  void getData() {
+    // Simulate username request
+    Future.delayed(Duration(seconds: 5), () => print('Yamamoto'));
+
+    // Simulate user bio request
+    Future.delayed(Duration(seconds: 2), () => print('Ninja from Japan'));
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('Build Function Run!');
+
     return Scaffold(
-      body: Scaffold(
-          backgroundColor: Colors.grey[200],
-          appBar: AppBar(
-            backgroundColor: Colors.blue[900],
-            title: Text('Choose Location'),
-            centerTitle: true,
-            elevation: 0,
-          )),
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose Location'),
+        centerTitle: true,
+        elevation: 0,
+      ),
     );
   }
 }
