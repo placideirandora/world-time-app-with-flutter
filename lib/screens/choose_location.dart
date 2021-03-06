@@ -19,15 +19,25 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
 
     getData();
 
-    print('statement');
+    print('Hello, World');
   }
 
-  void getData() {
+  void getData() async {
     // Simulate username request
-    Future.delayed(Duration(seconds: 5), () => print('Yamamoto'));
+    // Wait until the username is returned before moving to the user bio
+    String username =
+        await Future.delayed(Duration(seconds: 5), () => 'Yamamoto');
 
     // Simulate user bio request
-    Future.delayed(Duration(seconds: 2), () => print('Ninja from Japan'));
+    // Wait before the user bio is returned before moving to the print statement
+    String bio =
+        await Future.delayed(Duration(seconds: 2), () => 'Ninja from Japan');
+
+    print(username);
+
+    print(bio);
+
+    print('statement');
   }
 
   @override
