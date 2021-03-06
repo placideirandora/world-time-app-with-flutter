@@ -14,20 +14,41 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
 
-    print('ROUTE DATA RECEIVED: $data');
-
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             OutlinedButton.icon(
                 onPressed: () {
                   Navigator.pushNamed(context, '/location');
                 },
                 icon: Icon(Icons.edit_location),
-                label: Text('Edit Location'))
+                label: Text('Edit Location')),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    data['location'],
+                    style: TextStyle(fontSize: 28, letterSpacing: 3),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              data['time'],
+              style: TextStyle(fontSize: 50),
+            )
           ],
         ),
       )),
