@@ -12,7 +12,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   void setupWorldTime() async {
     WorldTime instance =
-        WorldTime(location: 'Paris', flag: 'paris.png', url: 'Europe/Paris');
+        WorldTime(url: 'Africa/Kigali', location: 'Kigali', flag: 'rwanda.png');
 
     await instance.getTime();
 
