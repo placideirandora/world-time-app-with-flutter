@@ -56,6 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 10,
               ),
+              CircleAvatar(
+                radius: 20,
+                backgroundImage: AssetImage('images/${data['flag']}'),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Row(
