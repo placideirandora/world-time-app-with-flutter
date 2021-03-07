@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
+    data = data.isEmpty ? ModalRoute.of(context).settings.arguments : data;
 
     String bgImage = data['isDayTime'] ? 'images/day.jpg' : 'images/night.jpg';
     Color color = data['isDayTime'] ? Colors.black : Colors.white;
@@ -32,8 +32,18 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               OutlinedButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                  onPressed: () async {
+                    dynamic locationData =
+                        await Navigator.pushNamed(context, '/location');
+
+                    setState(() {
+                      data = {
+                        'location': locationData['location'],
+                        'time': locationData['time'],
+                        'flag': locationData['flag'],
+                        'isDayTime': locationData['isDayTime']
+                      };
+                    });
                   },
                   icon: Icon(
                     Icons.edit_location,
