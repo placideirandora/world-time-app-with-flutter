@@ -57,7 +57,7 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.green[800],
+        backgroundColor: Colors.cyan[800],
         title: Text('Choose Location'),
         centerTitle: true,
         elevation: 0,
