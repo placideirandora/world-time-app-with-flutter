@@ -20,6 +20,19 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
     WorldTime(url: 'Africa/Kigali', location: 'Kigali', flag: 'rwanda.png'),
   ];
 
+  void updateTime(int locationIndex) async {
+    WorldTime location = locations[locationIndex];
+
+    await location.getTime();
+
+    Navigator.pop(context, {
+      'location': location.location,
+      'flag': location.flag,
+      'time': location.time,
+      'isDayTime': location.isDayTime
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -41,7 +54,7 @@ class _ChooseLocationScreenState extends State<ChooseLocationScreen> {
           return Card(
             child: ListTile(
               onTap: () {
-                print('LOCATION: ${locations[index].location}');
+                updateTime(index);
               },
               title: Text(locations[index].location),
               leading: CircleAvatar(
