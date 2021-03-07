@@ -16,12 +16,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     await instance.getTime();
 
-    Navigator.pushReplacementNamed(context, '/home', arguments: {
-      'location': instance.location,
-      'flag': instance.flag,
-      'time': instance.time,
-      'isDayTime': instance.isDayTime
-    });
+    Future.delayed(
+        Duration(seconds: 5),
+        () => {
+              Navigator.pushReplacementNamed(context, '/home', arguments: {
+                'location': instance.location,
+                'flag': instance.flag,
+                'time': instance.time,
+                'isDayTime': instance.isDayTime
+              })
+            });
   }
 
   @override
@@ -34,10 +38,29 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitFadingCircle(
-          color: Colors.green[800],
-          size: 60.0,
+      backgroundColor: Colors.cyan,
+      body: Container(
+        margin: EdgeInsets.only(top: 200),
+        height: 250,
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                'World Time',
+                style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+            Spacer(),
+            Center(
+              child: SpinKitWave(
+                color: Colors.white,
+                size: 25,
+              ),
+            )
+          ],
         ),
       ),
     );
